@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("messages");
 
-
+// usuario por defecto
         mUsername = ANONYMOUS;
 
         // Initialize references to views
