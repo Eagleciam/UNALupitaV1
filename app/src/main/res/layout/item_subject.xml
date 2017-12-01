@@ -10,7 +10,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/category_numbers">
+        android:background="@color/category_subject">
         <TextView
             android:id="@+id/subject_text_view"
             style="@style/CategoryStyle"
