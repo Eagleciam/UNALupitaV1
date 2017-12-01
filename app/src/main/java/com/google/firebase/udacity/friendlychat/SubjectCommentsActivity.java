@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static android.R.attr.x;
+
 public class SubjectCommentsActivity extends AppCompatActivity {
     private static final String TAG = "SubjectCommentsActivity";
 
@@ -53,7 +55,7 @@ public class SubjectCommentsActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListener;
 //    private FirebaseStorage mFirebaseStorage;
 //    private StorageReference mChatPhotosStorageReference;
-
+    private String nameNoSpaces;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -63,11 +65,17 @@ public class SubjectCommentsActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_subject_comments);
         setContentView(R.layout.activity_main);
 
+
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseAuth = FirebaseAuth.getInstance();
+        Intent intent = getIntent();
+        String name = intent.getExtras().getString("name");
+        for (int x=0; x < name.length(); x++) {
+            if (name.charAt(x) != ' ')
+                nameNoSpaces += name.charAt(x);
+        }
 
-        //        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("subjects").child("Robotica");
-        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("subjects");
+        mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("subjects").child(nameNoSpaces);
 
 
 // usuario por defecto

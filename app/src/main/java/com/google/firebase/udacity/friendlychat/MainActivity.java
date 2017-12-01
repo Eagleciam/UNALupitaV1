@@ -80,11 +80,10 @@ public class MainActivity extends AppCompatActivity {
 
 // usuario por defecto
 //        mUsername = ANONYMOUS;
-        Intent intentHist = new Intent(MainActivity.this , SubjectCommentsActivity.class);
-        //TODO todos los intents de cada materia
+
 
         final ArrayList<Subject> subjects= new ArrayList<Subject>();
-        subjects.add(new Subject("Historia de las ideas politicas",intentHist));
+        subjects.add(new Subject("Historia de las ideas politicas"));
         subjects.add(new Subject("Catedra Julio Garavito Armero"));
         subjects.add(new Subject("Catedra Colombia"));
         subjects.add(new Subject("Grafica Interactiva"));
@@ -112,8 +111,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
+                Intent intentSubjectComments = new Intent(MainActivity.this , SubjectCommentsActivity.class);
+
                 Subject subject = subjects.get(position);
-                startActivity(subject.getIntentToLaunch());
+                intentSubjectComments.putExtra("name",subject.getName());
+                startActivity(intentSubjectComments);
 
             }
         });
